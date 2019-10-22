@@ -744,11 +744,170 @@ console.log('n2='+n2);//18
 
 ```
 
-
-
 #### 19.JS基础_逻辑运算符
+
+js中为我们提供了三种逻辑运算符
+
+！非   ！可以用来对一个值进行非运算
+
+true变false,false变true
+
+如果不对一个值进行两次取反，他的值不会变化。
+
+如果对非布尔值进行运算，则会将其转换为布尔值，然后再取反。
+
+所以我们可以利用该特点，来将一个其他的数据类型转换成布尔值
+
+可以为一个任意数据类型取两次反，来将其转换为布尔值。
+
+var a =true;
+
+a=!a;
+
+console.log（“a="+a);
+
+//执行返回a=false;
+
+
+
+&&与
+
+可以对符号两边的值进行与运算并返回结果
+
+运算规则
+
+如果两个值都是true则返回true
+
+var result =true&&true;
+
+只要有一个false，就返回false
+
+result=true&&false;
+
+result=false&&true;
+
+result=false&&false;
+
+//第一个值为true,会检查第二个值
+
+true&&alert("看我出不出来"）;   会执行出弹框
+
+//第一个值为false,不会检查第二个值
+
+false&&alert("看我出不出来");   不会执行出弹框
+
+
+
+||或   ||可以对符号两边的值进行或运算并返回结果
+
+
+
+两个都是false，则返回false
+
+result=false||false;
+
+只有一个true,就返回true
+
+result=true||true;
+
+result=false||true;
+
+result=true||true;
+
+
+
+JS中的”或“属于短路的或
+
+如果第一个值为true,则返回true,不会检查第二个值
+
+如果第二个值为false,则会检查第二个值
+
 #### 20.JS基础_非布尔值的与或运算
+
+//true&&true
+
+与运算，如果两个值都为true,则返回后边的
+
+var result =2&&1;
+
+console.log("result= "result);
+
+//执行：”result=1";
+
+
+
+false&&true
+
+result=0&&2;
+
+result=2&&0;
+
+result=NaN&&0;
+
+//是false，执行得false值，是NaN得NaN
+
+//与运算中，如果两个值中有false，则返回靠前的false
+
+result=NaN&&0;执行返回NaN,
+
+result=0&&NaN;执行返回0;
+
+
+
+与运算：
+
+如果第一个值为true,则直接返回第二个值。
+
+如果第一个值为false,则直接返回第一个值。
+
+
+
+
+
+或运算：
+
+true||true
+
+如果第一个值为true,则直接返回第一个值。
+
+result=2||1;
+
+result=2||NaN；
+
+result=2||0;
+
+如果第一个值为false,则直接返回第二个值
+
+result=NaN||1;
+
+result=NaN||0;
+
 #### 21.JS基础_赋值运算符
+
+=：
+
+可以将符号右侧的值赋值给符号左侧的变量
+
++=：
+
+a+=5;===a=a+5;
+
+-=:
+
+a-=5;===a=a-5;
+
+a*=5;
+
+a*=5;==a=a*5;
+
+/=;
+
+a/=5;===a=a/5;
+
+%=;
+
+a%=5;===a=a%5;
+
 #### 22.JS基础_关系运算符
 #### 23.JS基础_Unicode编码表
 #### 25.JS基础_条件运算符
