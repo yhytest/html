@@ -908,9 +908,142 @@ a/=5;===a=a/5;
 
 a%=5;===a=a%5;
 
-#### 22.JS基础_关系运算符
+#### 22.JS基础_关系运算符\
+
+大于
+
+小于
+
+大于等于
+
+小于等于
+
+非布尔值的比较
+
+```javascript
+console.log("result=" +result);
+console.log(1>true);//false
+console.log(1>=true);//true
+console.log(1>"0");//true
+console.log(10>null);//true
+console.log(10>"hello"）;//true
+console.log(10<"hello"）;//false  hello转成数字是nan
+            //任何值和Nan做任何比较都是false
+ console.log("1"<"5");//true
+//如果符号两侧的值都是字符串时，不会将其转换为数字进行比较
+//而会分别比较字符串中字符的Unicode编码
+```
+
 #### 23.JS基础_Unicode编码表
+
+js中在字符串中使用转义字符\u
+
+html在字符串中使用转义字符要十六进制转换成十进制&#编码
+
+
+
+#### 24.JS基础_相等运算符
+
+相等运算符用来比较两个值是否相等
+
+如果相等会返回true，否则则返回false
+
+使用==来做相等运算
+
+var a =10;
+
+console.log(a==4);//false
+
+console.log("1"==1);//true
+
+当使用==来比较两个值时，如果值的类型不同，则会自动进行类型转换，将其转换为
+
+相同的类型，然后再比较
+
+console.log("1"==1);  //true
+
+console.log("true"=="1");//true
+
+console.log(true =="hello");//false
+
+console.log(null==0);//false   
+
+
+
+undefined衍生自null
+
+所以这两个值做相等判断是否，会返回true
+
+console.log(undefined ==null); //true
+
+
+
+NaN不和任何值相等，包括它本身
+
+console.log(NaN==NaN);//false
+
+
+
+var b=NaN;
+
+判断B的值是否是NaN
+
+console.log(b==NaN);
+
+可以通过ISnan()函数来判断一个是否是NaN,
+
+如果该值是NaN则返回true，否则则返回false
+
+console,log(isNaN(b));//true
+
+var b =123,则上面返回false
+
+
+
+不相等 用来判断两个值是否不相等，如果不相等则返回true,否则返回false
+
+console.log(10!=5);//true
+
+console.log(10!=10);//false
+
+console.log("abcd"!="abcd");//false
+
+console.log("1"!=1);//false
+
+使用！=不相等做运算
+
+不相等也会对变量进行自动的类型转换，如果转换后相等它也会返回false
+
+
+
+
+
+====全等   用来判断两个字是否全等，它和相等类似。不同的是不会做自动的类型转换。
+
+如果两个值的类型不同，自动返回false、
+
+console.log("123==123");//true
+
+console.log("123===123");/false  类型不同自动返回false
+
+
+
+console.log(null==undefined);//true
+
+console.log(null===undefined);//false
+
+
+
+!==  不全等  用来判断两个值是否不全等，和不等类似，不同的是它不会做自动的类型转换
+
+如果两个值的类型不同，直接返回true
+
+console.log(1!=1);//true
+
+
+
 #### 25.JS基础_条件运算符
+
 #### 26.JS基础_运算符的优先级
 #### 27.JS基础_代码块
 #### 28.JS基础_if语句（一）
