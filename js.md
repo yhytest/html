@@ -1576,7 +1576,113 @@ do。。。while可以保证循环体至少执行一次，而while不能
 
 #### 43.JS基础_for循环练习
 #### 44.JS基础_break和continue
+
+```javascript
+//break 关键字可以用来退出switch或循环语句
+//不能在if语句中使用break和continue
+//break关键字，会立即终止离他最近的那个循环语句
+
+/*for(var i=0;i<5;i++){
+    console.log(i);
+    if(i ==2);{
+        break;
+    }
+}
+*/
+
+可以为循环语句创建一个label,来标识当前的循环
+label:循环语句
+使用break语句时，可以在break后跟着一个label,
+   这样break将会结束指定的循环，而不是最近的。
+outer
+for(var i=0;i<5;i++){
+    console.log("@外层循环“+i)
+                for(var j=0;j<5;j++){
+        break outer;
+        console.log("内存循环：”+j);
+                    
+    }
+}
+    
+    continue关键字可以用来跳过当次循环
+    同样continue也是默认只会对离他最近的循环循环起作用
+    for(var i=0;i<5;i++){
+        if(i==2){
+            continue;
+        }
+        console.log(i);
+    }
+    
+    outer;
+    
+    for(var i=0;i<5;i++){
+        for(var j=0;j<5;j++){
+            continue;
+        
+        console.log("-->"+j);
+       
+    }
+    console.log("@--->"+i);
+    }
+    
+
+```
+
+
+
 #### 45.JS基础_质数练习的改进
+
+```
+			
+			//测试如下的程序的性能
+			//在程序执行前，开启计时器
+			//console.time("计时器的名字")可以用来开启一个计时器
+			//它需要一个字符串作为参数，这个字符串将会作为计时器的标识
+			console.time("test");
+			
+			//打印2-100之间所有的数
+			for(var i=2 ; i<=100000 ; i++){
+				var flag = true;
+				for(var j=2 ; j<=Math.sqrt(i) ; j++){
+					if(i%j == 0){
+						//如果进入判断则证明i不是质数,修改flag值为false
+						flag = false;
+						//一旦进入判断，则证明i不可能是质数了，此时循环再执行已经没有任何意义了
+						//使用break来结束循环
+						break;
+						
+						//不加break 215ms
+						//加break 25ms
+						//修改j<=后 2.6
+					}
+				}
+				//如果是质数，则打印i的值
+				if(flag){
+					//console.log(i);
+				}
+			}
+			
+			//终止计时器
+			//console.timeEnd()用来停止一个计时器，需要一个计时器的名字作为参数
+			console.timeEnd("test");
+			
+			/*
+			 * 36
+			 * 1 36
+			 * 2 18
+			 * 3 12
+			 * 4 9
+			 * 6 6
+			 */
+			
+			//可以通过Math.sqrt()对一个数进行开方
+			//var result = Math.sqrt(97);
+			
+			//console.log("result = "+result)
+```
+
+
+
 #### 46.JS基础_对象的简介
 #### 47.JS基础_对象的基本操作
 #### 48.JS基础_属性名和属性值
