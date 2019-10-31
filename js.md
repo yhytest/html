@@ -1684,8 +1684,146 @@ for(var i=0;i<5;i++){
 
 
 #### 46.JS基础_对象的简介
+
+```javascript
+/*
+*js中数据类型
+-string字符串
+-Number数值
+-Boolean布尔值
+-Null控制
+-Undefined未定义
+-以上这五种类型属于数据类型，以后我们看到的值只要不是上边的5种，全都是对象
+-object 对象
+基本数据类型都是单一的值“hello"123 true,
+值和值之间没有任何的联系
+在js中表示一个人的信息（name  gender  age);
+var name="孙悟空";
+var gender="男";
+var age =18;
+如果使用基本数据类型的数据，我们所创建的变量都是独立，不能成为一个整体。
+对象属于一种复合的数据类型，在对象中可以保存多个不同数据类型的属性。
+
+对象的分类：
+1.内建对象
+-由ES标准中定义的对象，在任何的ES的实现中都可以使用
+-比如，Math String Number Boolean Function Object...
+
+2.宿主对象
+由JS的运行环境提供的对象，目前来讲主要指由浏览器提供的对象
+-比如BOM  DOM
+
+3.自定义对象
+-由开发人员自己创建的对象
+
+
+创建的对象
+使用new关键字调用的函数，是构造函数CONSTRUCTOR  constructor
+构造函数是专门用来创建对象的函数
+使用typeof 检查一个对象时，会返回object
+
+var obj =new object();
+
+
+/*
+*在对象中保存的值称为为属性
+向对象添加属性
+语法：对象.属性名=属性值；
+
+向obj中添加一个name属性
+obj.name="孙悟空"；
+向obj中添加一个gender属性
+obj.gender="男"；
+向obj中添加一个age属性
+obj.age=18;
+
+"读取对象中的属性"
+”语法：对象.属性名“
+如果读取对象中没有的属性，不会报错而是会返回undefined
+
+console.log(obj.gender);
+console.log(obj.hello);
+
+修改对象的属性值
+语法：对象,属性名=新值
+
+obj.name="tom";
+删除对象的属性
+语法：delete 对象.属性名
+
+delete obj.name;
+console.log(obj.age);
+
+```
+
+
+
 #### 47.JS基础_对象的基本操作
 #### 48.JS基础_属性名和属性值
+
+```javascript
+//向对象中添加属性
+属性名：
+-对象的属性名不强制要求遵守标识符的规范
+声明乱七八糟的名字都可以使用
+但是我们使用是还是尽量按照标识符的规范去做
+
+obj.name="孙悟空"；
+obj.var=”hello";
+
+如果要使用特殊的属性名，不能采用.的方式来操作
+需要使用另一种方式
+语法：对象【”属性名“】=属性值
+读取时也需要采用这种方式
+
+使用【】这种形式去操作属性，更加的灵活
+在【】中可以直接传递一个变量，这样变量值是多少就会读取那个属性
+
+obj["123"]=789;
+obj["nihao"]="你好"；
+var n="nihao";
+//console.log(obj["123"]);
+
+/属性值
+js对象的属性值，可以是任意的数据类型
+甚至也可以是一个对象
+
+obj.test=true;
+obj.test=null
+obj.test=undefined;
+
+//创建一个对象
+var obj2=new object();
+obj2.name="猪八戒"；
+
+//将obj2设置为obj的属性
+obj.test=obj2;
+
+//console.log(obj.test.name);
+in 运算符
+通过该运算符可以检查一个对象中是否含有指定的属性
+如果有则返回true,没有则返回false
+语法
+”属性名“in 对象
+console.log(obj.test2);
+检查obj中是否含有台test2属性
+console.log("test2"in obj);
+console.log("test" in obj);
+console.log("name"in obj)
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
 #### 49.JS基础_基本数据类型和引用数据类型
 #### 50.JS基础_对象字面量
 #### 51.JS基础_函数的简介
