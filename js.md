@@ -1810,26 +1810,396 @@ console.log(obj.test2);
 console.log("test2"in obj);
 console.log("test" in obj);
 console.log("name"in obj)
-
-
-
-
-
-
-
-
-
-
 ```
 
 
 
 #### 49.JS基础_基本数据类型和引用数据类型
+
+基本数据类型：striing,Number,Boolean,Null,Undefined
+
+引用数据类型 Object
+
+JS中的变量都是保存到栈内存中的，基本数据类型的值自减在栈内存中存储，值与值之间是独立存在，修改一个变量不会影响其他的变量
+
+对象是保存在堆内存中的，每创建一个新的对象，就会在堆内存中开辟出一个新的空间
+
+而变量保存的是对象的内存地址（对象的引用 ），如果两个变量保存的是同一个对象引用，当一个通过变量修改属性时，另一个也会受到影响
+
+
+
+var a=123;
+
+var b=a;
+
+a++;
+
+/*console.log(“a=”+a);
+
+console.log("b="+b);
+
+*/
+
+var obj =new object();
+
+obj.name="孙悟空"；
+
+var obj2=obj;
+
+//修改obj的name属性
+
+obj.name="猪八戒"；
+
+/*console.log(obj.name);
+
+console.log(obj2.name);*/
+
+
+
+设置obj2为null
+
+obj2=null;
+
+/*console.log(obj);
+
+console.log(obj2);*/
+
+var c=10;
+
+var d=10;
+
+//console.log(c==d);
+
+var obj3=new Object();
+
+var obj4=new Object();
+
+obj3.name="沙和尚"；
+
+obj4.name=”沙和尚“；
+
+
+
+/*console.log(obj3);
+
+console.log(obj4);
+
+/*当比较两个基本数据类型的值时，就是比较值。
+
+而比较两个引用数据类型时，它是比较的对象的内存地址
+
+如果两个对象是一模一样的，但是地址不同，它也是会返回false.*/
+
+
+
+console.log(obj3==obj4);
+
 #### 50.JS基础_对象字面量
+
+//创建一个对象
+
+var obj =new Object();
+
+//使用对象字面量来创建一个对象
+
+var obj={};
+
+//console.log(typeof obj);
+
+obj.name="孙悟空"；
+
+//console.log(obj.name);
+
+使用对象字面量，可以在创建对象时，直接指定对象中的属性
+
+语法：{属性名：属性值，属性名：属性值。。。}
+
+对象字面量的属性名可以加引号也可以不加，建议不加
+
+如果要使用一些特殊的名字，则必须加引号
+
+属性名和属性值是一组一组的名值对结构，
+
+名和值自减使用：连接，多个名值对之间使用，隔开
+
+如果一个属性之后没有其他的属性了，就不要写
+
+
+
+var obj2={
+
+name:"猪八戒"，
+
+age:13,
+
+gender:"男"；
+
+test:{name:"沙僧"}
+
+}；
+
+console.log(obj2.test);
+
 #### 51.JS基础_函数的简介
+
+函数function
+
+函数也是一个对象
+
+函数中可以封装一些功能（代码），在需要时可以执行这些功能（代码）
+
+函数中可以保存一些代码在需要的时候调用
+
+使用typeof检查一个函数对象时，会返回function
+
+我们在实际开发中很少使用构造函数来创建一耳光函数对象
+
+创建一个函数对象，可以将要封装的代码以字符串的形式传递给构造函数
+
+var fun=new function("console.log('hello这是我的第一个函数’）；”)；
+
+封装到函数中的代码不会立即执行
+
+函数中的代码会在函数调用的时候执行
+
+调用函数 语法：函数对象（）
+
+当调用函数时，函数中封装的代码会按照顺序执行
+
+fun();
+
+使用函数声明 来创建一个函数
+
+语法：
+
+function 函数名（【形参1，形参2。。。形参N】）{
+
+语句。。。}
+
+function fun2(){
+
+console.log("这是我的第二个函数~~~")；
+
+alert("哈哈哈哈")；
+
+document.write("~~~kaixin~~~");
+
+}
+
+//console.log(fun2);
+
+调用fun2
+
+fun2();
+
+
+
+使用函数表达式来创建一个函数
+
+var 函数名=function（【形参1，形参2。。。形参N】）{
+
+语句。。。}
+
+
+
+var fun3 =function(){
+
+console.log("我是匿名函数中的封装的代码")
+
+}；
+
+fun3();
+
 #### 52.JS基础_函数的参数
+
+定义一个用来求两个数和的函数
+
+可以在函数的（）中来指定一个或多个形参（形式参数）
+
+多个形参之间使用，隔开，声明形参就相当于在函数内部声明了对应的变量
+
+但是并不赋值
+
+function sum(a,b){
+
+console.log("a ="+a);
+
+console.log("b="+b);
+
+console.log(a+b);
+
+}
+
+
+
+在调用函数时，可以在（）中指定实参（实际参数）
+
+实参将会赋值给函数中对应的形参
+
+sum（1,2）；
+
+sum（123,456）；
+
+调用函数时解析器不会检查实参的类型
+
+所以要注意，是否有可能会接受到非法的参数，如果有可能则需要对参数进行类型的检查
+
+函数的实参可以是任意的数据类型
+
+sum(123,"hello");
+
+sum(true,false);
+
+调用函数时，解析器也不会检查实参的数量
+
+多余实参不会被赋值
+
+如果实参的数量少于形参的数量，则没有对一你个实参的形参将是undefined
+
+sum(123,455,"hello",true,null);
+
+sum(123);
+
 #### 53.JS基础_函数的返回值
+
+创建一个函数，用来计算三个数的和，可以使用reture来设置函数的返回值
+
+语法：reture值
+
+reture后的值将会作为函数的执行结果返回
+
+可以定一个一个变量，来接受该结果
+
+在函数中reture后的语句都不会执行
+
+如果reture语句后不跟任何值就相当于返回一个undefined，
+
+如果函数中不写return,则也会返回undefined
+
+return后可以跟任意类型的值
+
+
+
+function sum(a,b,c){
+
+//alert(a+b+c);
+
+var d=a+b+c;
+
+return d ;
+
+//return  undefined
+
+}
+
+调用函数
+
+变量result的值就是函数的执行结果
+
+函数返回声明result的值就是什么
+
+var result =sum(4,7,8);
+
+//var result=alert("hello");
+
+console.log("result="+result);
+
 #### 54.JS基础_实参可以是任何值
+
+定义一个函数，判断一个数字是否是偶数，如果是返回true,否则返回false
+
+function isou(num){
+
+return num%2==0l
+
+}
+
+var result=isou(15);
+
+//console.log("result="result);
+
+
+
+定义一个上述，可以根据半径计算一个圆的面积，并返回计算结果
+
+3.148*r*r
+
+function mianji(r){
+
+return3.14rr
+
+}
+
+result=mianji(5);
+
+//console.log("result="+result);
+
+//创建一个函数，可以在控制台中输出一个人的信息
+
+可以输出人的name,age,gender,address
+
+实参可以是任意的数据类型，也可以是一个对象
+
+当我们的参数过多时，可以将参数封装到一个对象中，然后通过对象传递
+
+function sayhello（o){
+
+}
+
+
+
+//console.log("o="+o);
+
+console.log("我是"+o.name+",今年我“+o.age+"岁了，”+“我是一个”+o.gender+"人"+“，我住在”+o.address);
+
+}
+
+//sayhello("猪八戒"，28,"高老庄"，“男”)；
+
+//创建一个对象
+
+var obj={
+
+name:="孙悟空"，
+
+age:18,
+
+address:"花果山"，
+
+gender:"男"
+
+}；
+
+//sayhello(obj);
+
+实参可以是一个对象，也可以说一个函数
+
+function fun(a){
+
+console.log("a="+a);
+
+//a(obj)
+
+//fun(sayhello);
+
+//fun(function(){alert("hello")});
+
+fun(mianji(10)；)
+
+}
+
+//mianji()
+
+调用函数
+
+相当于使用的函数的返回值
+
+//mianji
+
+函数对象
+
+相当于自己使用函数对象
+
 #### 55.JS基础_返回值的类型
 #### 56.JS基础_立即执行函数
 #### 57.JS基础_方法
