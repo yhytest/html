@@ -2201,8 +2201,165 @@ fun(mianji(10)；)
 相当于自己使用函数对象
 
 #### 55.JS基础_返回值的类型
+
+function fun(){
+
+alert("函数要执行力~~~")}；
+
+for(var i=0;i<5;i++){
+
+if(i==2){
+
+//使用break可以退出当前的循环
+
+//break;
+
+//continue用于跳过当次循环
+
+//continue;
+
+//使用returen可以结束整个函数
+
+//return;
+
+}
+
+console.log(i);
+
+}
+
+alert("函数执行完了~~~")；
+
+}
+
+//fun();
+
+//返回值可以是任意的数据类型
+
+也可以是一个对象，也可以是一个函数
+
+function fun2(){
+
+//返回一个对象
+
+return(name:"沙和尚")；
+
+}
+
+var a=fun2();
+
+//console.log("a="+a);
+
+function fun3(){
+
+//在函数内部再声明一个函数
+
+function fun4(){
+
+alert("我是fun4");
+
+}
+
+//将fun4函数对象作为返回值返回
+
+return fun4；
+
+}
+
+a=fun3();
+
+//console.log(a);
+
+//a();
+
+fun3()();
+
 #### 56.JS基础_立即执行函数
+
+//函数对象（）
+
+立即执行函数
+
+函数定义完，立即被调用，这种函数叫做立即执行函数
+
+立即执行函数往往只会执行一次
+
+（function(){
+
+alert("我是一个匿名的函数！！！")；
+
+}）（）;*/
+
+(function(a,b){
+
+console.log("a="+a);
+
+console.log("b="+b);
+
+})(123,456);
+
 #### 57.JS基础_方法
+
+创建一个对象
+
+var obj=new object();
+
+向对象中添加属性
+
+obj.name="孙悟空"；
+
+obj.age=18;
+
+对象的属性值可以是任何的数据类型，也可以是个函数
+
+obj.sayName=function(){
+
+console.log(obj.name);
+
+};
+
+function fun(){
+
+console.log(obj.name);
+
+}
+
+//console.log(obj.sayName);
+
+//调方法
+
+obj.sayName();
+
+//调函数
+
+//fun();
+
+函数也可以成为对象的属性
+
+如果一个函数作为一个对象的属性保存
+
+那么我们称这个函数时这个对象的方法
+
+调用这个和函数就说调用对象的方法（method)
+
+但是它只是名称上的区别没有其他的区别
+
+var obj2={
+
+name：“猪八戒”，
+
+age:18
+
+sayName:function(){
+
+console.log(obj2.name);
+
+}
+
+};
+
+boj2.sayName();
+
 #### 58.JS基础_全局作用域
 #### 59.JS基础_函数作用域
 #### 60.JS基础_debug
