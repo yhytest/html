@@ -2361,11 +2361,341 @@ console.log(obj2.name);
 boj2.sayName();
 
 #### 58.JS基础_全局作用域
+
+作用域
+
+作用域指一个变量的作用的范围
+
+在JS中一共有两种作用域：
+
+1.全局作用域
+
+ 直接编写在script中标签中的j代码，都在全局作用域
+
+全局作用域在页面打开时创建，在页面关闭时销毁
+
+在全局作用域中有一个全局对象window
+
+它代表的是一个浏览器的窗口，它由浏览器创建我们可以直接使用
+
+在全局作用域中
+
+创建的变量都会作为window对象的属性保存
+
+创建的函数都会作为window对象的方法保存
+
+
+
+全局作用域中的变量都是全局变量，在页面的任意的部分都可以访问得到
+
+2.函数作用域
+
+var a=10;
+
+var b=20;
+
+
+
+//var c="hello";
+
+//console.log(window.c);
+
+function fun(){
+
+console.log("我是fun函数")；
+
+}
+
+//window.fun();
+
+window.alert("hello");
+
 #### 59.JS基础_函数作用域
+
+函数作用域
+
+调用函数时创建函数作用域，函数执行完毕以后，函数作用域销毁
+
+没调用一次函数就会创建一个新的函数作用域，他们自己是互相独立的，
+
+在函数作用域中可以访问到全局作用域的变量，
+
+在全局作用域中无法访问到函数作用域的变量。
+
+当在函数作用域操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用
+
+如果没有则向上一级作用域中寻找，知道找到全局作用域
+
+如果全局作用域中依然没有找到，则会报错referenceERROR
+
+
+
+在函数中要访问全局变量可以使用window对象
+
+
+
+创建一个变量
+
+var a=10;
+
+function fun(){
+
+var a="我是fun函数中的变量A";
+
+var b=20;
+
+//console.log("a="+a);
+
+function fun2(){
+
+console.log("a="+window.a);
+
+}
+
+fun2();
+
+}
+
+//fun();
+
+console.log("b+"+b);
+
+在函数作用域也有声明提前的特性，
+
+使用var关键字声明的变量，会在函数中所有的代码执行之前被声明
+
+函数声明也会在函数中所有的代码执行之前执行
+
+function fun3(){
+
+fun4();
+
+//console.log(a);
+
+var a=35;
+
+function fun4(){
+
+alert ("i m fun4");
+
+}
+
+}
+
+//fun3();
+
+var c=33;
+
+//在函数中，不适用var声明的变量都会成为全局变量
+
+function fun5(){
+
+//console.log("c="+c);
+
+//c=10;
+
+//d没有使用var关键字，则会设置为全局变量
+
+d=100;
+
+}
+
+fun5();
+
+//在全局输出C
+
+//console.log("d="+d);
+
+var e =23l
+
+//定义形参就相当于在函数作用域中声明了变量
+
+function fun6(e){
+
+alert（e);
+
+}
+
+fun6();
+
+
+
+//变量的声明提前
+
+使用var关键字声明的变量，会在所有的代码执行之前被声明（但是不会赋值），但是如果生命变量时不适用var关键字，则变量不会被声明提前
+
+
+
+函数的声明提前，使用函数声明形式创建的函数function函数（）{}
+
+它会在所有的代码执行之前就被创建，所以我们可以在函数声明前来调用函数
+
+使用函数表达式创建的函数，不会被声明提前，所以不能再声明前调用
+
+//console.log("a="+a);
+
+var a =123;
+
+fun();
+
+函数声明，会被提前创建
+
+function fun(){
+
+console.log("我是一个fun函数")；
+
+}
+
+//函数表达式，不会被提前创建
+
+var fun2=functon(){
+
+console.log("我是fun2函数")；
+
+}；
+
+fun2();
+
 #### 60.JS基础_debug
+
+```javascript
+alert(d);
+var a=10;
+var b="hello";
+c=true;
+function fun(){
+    alert("hello");
+}
+var d=35;
+```
+
 #### 61.JS基础_this
+
+```javascript
+解析器在调用函数每次都会想函数内部传递进一个隐含的参数
+这个隐含的参数就是this,this指向的是一个对象，
+这个对象我们称为函数执行的上下文对象
+根据函数的调用方式的不同，this会指向不同的对象
+1以函数的形式调用时，this永远都是window
+2以方法的形式调用时，this就是调用方法的那个对象
+function fun(){
+    //console.log("a="+a+,b="+b);
+    console.log(this.name);
+}
+//fun()；
+//创建一个对象
+var obj={
+    name:"孙悟空"，
+    sayName:fun    
+};
+var obj2={
+    name:"沙和尚"，
+    sayName:fun
+}
+
+//console.log(obj.sayName==fun);
+var name="全局的name属性"；
+//obj.sayName();
+//以函数形式调用，this是window
+//fun();
+//以方法的形式调用，this是调用方法的对象
+//obj.sayName();
+obj2.sayName();
+
+```
+
 #### 62.JS基础_this补充
+
+//创建一个name变量
+
+var name="全局"；
+
+//创建一个fun（）函数
+
+function fun(){
+
+console.log(this.name);
+
+}
+
+//创建两个对象
+
+var obj={
+
+name:"孙悟空"；
+
+sayName:fun
+
+}；
+
+var obj2={
+
+name:"沙和尚"，
+
+sayName:fun
+
+};
+
+//我们希望调用obj.sayName()时可以输出obj的名字
+
+//obj.sayName();
+
+obj.sayName();
+
+
+
 #### 63.JS基础_使用工厂方法创建对象
+
+```javascript
+//创建一个对象
+var obj={
+    name:"孙悟空"，
+    age:=18;
+    gender:"男"，
+    sayName:function(){
+        alert(this.name);
+    }
+};
+//使用工厂方法创建对象
+//通过该方法可以大批量的创建对象
+function createPerson(name,age,gender){
+    //创建一个新的对象
+    var obj=new object();
+    //向对象中添加属性
+    obj.name=name;
+    obj.age=age;
+    obj.gender=gender;
+    obj.sayName=function(){
+        alert(this.name);
+    };
+    //将新的对象返回
+    return obj;
+}
+function createDOg(name,age){
+    var obj =new object();
+    obj.name=name;
+    obj.age=age;
+    obj.sayHello=function(){
+        alert("汪汪~~")；
+    }；
+    return obj;
+}
+
+var obj2=createPerson("猪八戒"，28，”男“)；
+var obj3 = createPerson("白骨精",16,"女");
+var obj4 = createPerson("蜘蛛精",18,"女");
+//使用工厂方法创建的对象，使用的构造函数都是Object
+所以串讲的对象都是object这个类型
+就导致我们无法区分出多种不同类型的对象
+
+//创建一个狗的对象
+var dog=createDOG("旺财"，3)；
+console.log(dog);
+console.log(obj4);
+```
+
+
+
 #### 64.JS基础_构造函数
 #### 65.JS基础_.构造函数修改
 #### 66.JS基础_原型对象
