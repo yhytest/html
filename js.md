@@ -2734,27 +2734,70 @@ this的情况
 
 3.当以构造函数的形式调用时，this就是新创建的那个对象。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #### 65.JS基础_.构造函数修改
 #### 66.JS基础_原型对象
 #### 67.JS基础_原型对象
 #### 68.JS基础_toString()
+
+```javascript
+function Person(name,age,gender){
+    this.name=name;
+    this.age=age;
+    this.gender=gender;
+}
+//修改Persono原型的toString
+Person.prototype.toString=function(){
+    return"Preson[name+"+this.name+",age+"+",gender="+
+        this.gender+"]“;
+};
+//创建一个Person实例
+var per =new Person("孙悟空"，18，”男“)；
+var per2 =new Person("猪八戒"，28，”男“)；
+//当我们自己在页面中打印一个对象时，实际上是输出的对象的toString()方法的返回值
+//如果我们希望在输出对象时补输出【object，object】，可以为对象添加一个toString（）方法
+//person[name=孙悟空，age=18,gender=男]
+//per.toString=function(){return "Person[name="+this.name+",age="+this.age+",gender="+this.gender+"]";
+			};*/
+			
+			var result = per.toString();
+			//console.log("result = " + result);
+			//console.log(per.__proto__.__proto__.hasOwnProperty("toString"));
+			console.log(per2);
+			console.log(per);
+
+}
+```
+
+
+
 #### 69.JS基础_垃圾回收
+
+垃圾回收（GC)
+
+程序运行过程中和人一样会产生垃圾
+
+这些垃圾积攒多以后，会导致程序运行的速度过慢
+
+所以我们需要一个垃圾回收的机制，来处理程序运行中产生的垃圾
+
+当一个对象没有任何的变量或属性对他进行引用，此时我们将永远无法操作该对象
+
+此时这种对象就是一个垃圾，这种对象过多会占用大量的内存空间，导致程序运行变慢
+
+所以这种垃圾必须进行清理
+
+在JS中拥有自动的垃圾回收机制，会自动将这些垃圾对象从内存销毁
+
+我们不需要也不能进行垃圾回收的操作
+
+我们需要做的只是要将不再使用的对象设置null即可
+
+var  obj  =new  object();
+
+//对对象进行各种操作。。。
+
+obj=null；
+
 #### 70.JS基础_数组简介
 #### 71.JS基础_数组字面量
 #### 72.JS基础_数组的四个方法
