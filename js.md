@@ -2799,8 +2799,207 @@ var  obj  =new  object();
 obj=null；
 
 #### 70.JS基础_数组简介
+
+内建对象
+
+宿主对象自定义对象
+
+数组（Array)
+
+数组也是一个对象
+
+它和我们普通对象功能类似，也是用来存储一些值的
+
+不同的是普通对象是使用字符串作为属性名的
+
+而数组时使用数字来作为索引操作元素
+
+索引：
+
+从0开始的整数就是索引
+
+数组的存储性能比普通对象要好，在开发中我们经常使用数组来存储一些数据
+
+创建数组对象
+
+var arr=new Array();
+
+//使用typeof检查一个数组时，会返回object
+
+console.log(typeof arr);
+
+向数组中添加元素
+
+语法：数组【索引】=值
+
+arr[0] = 10;
+arr[1] = 33;
+arr[2] = 22;
+arr[3] = 44;
+
+/*arr[10]=31;
+
+arr[100]=90
+
+*/
+
+读取数组中的元素
+
+语法：数组【索引】
+
+如果读取不存在的索引，他不会报错而是返回undefined
+
+//console.log(arr[3]);
+
+获取数组的长度
+
+可以使用length属性来获取数组的长度（元素的个数）
+
+语法：数组.length
+
+对于连续的数组，使用length可以获取到数组的长度（元素的个数）
+
+对于非连续的数组，使用length会获取到数组的最大的索引+1
+
+尽量不要创建非连续的数组
+
+console.log(arr.length;
+
+console.log(arr);
+
+修改length
+
+* 	如果修改的length大于原长度，则多出部分会空出来
+* 	如果修改的length小于原长度，则多出的元素会被删除
+
+//arr.length=10;
+
+/*arr.length=2;
+
+console.log(arr.length);
+
+console.log(arr);*/
+
+arr[4]=50;
+
+arr[5]=60;
+
+向数组的最后一个位置添加元素
+
+语法：数组【数组。length】=值；
+
+arr[arr.length]=70;
+
+arr[arr.length]=80l
+
+arr[arr.length]=90;
+
+console.log(arr);
+
 #### 71.JS基础_数组字面量
+
+```javascript
+//创建一个数组
+			var arr = ["孙悟空","猪八戒","沙和尚"];
+			
+			/*
+			 * push()
+			 * 	- 该方法可以向数组的末尾添加一个或多个元素，并返回数组的新的长度
+			 * 	- 可以将要添加的元素作为方法的参数传递，
+			 * 		这样这些元素将会自动添加到数组的末尾
+			 * 	- 该方法会将数组新的长度作为返回值返回
+			 */
+			
+			var result = arr.push("唐僧","蜘蛛精","白骨精","玉兔精");
+			
+			
+			//console.log(arr);
+			//console.log("result = "+result);
+			
+			/*
+			 * pop()
+			 * 	- 该方法可以删除数组的最后一个元素,并将被删除的元素作为返回值返回
+			 */
+			result = arr.pop();
+			/*console.log(arr);
+			console.log("result = "+result);*/
+			
+			/*
+			 * unshift()
+			 * 	- 向数组开头添加一个或多个元素，并返回新的数组长度
+			 * 	- 向前边插入元素以后，其他的元素索引会依次调整
+			 */
+			//console.log(arr);
+			
+			arr.unshift("牛魔王","二郎神");
+			
+			console.log(arr);
+			
+			/*
+			 * shift()
+			 * 	- 可以删除数组的第一个元素，并将被删除的元素作为返回值返回
+			 */
+			result = arr.shift();
+			result = arr.shift();
+			
+			console.log(arr);
+			console.log("result = "+result);
+			
+			
+```
+
+
+
 #### 72.JS基础_数组的四个方法
+
+```javascript
+            //创建一个数组
+			//var arr = new Array();
+			
+			//使用字面量来创建数组
+			//语法:[]
+			//var arr = [];
+			
+			//console.log(typeof arr);
+			
+			//使用字面量创建数组时，可以在创建时就指定数组中的元素
+			var arr = [1,2,3,4,5,10];
+			
+			//console.log(arr[3]);
+			
+			//使用构造函数创建数组时，也可以同时添加元素，将要添加的元素作文构造函数的参数传递
+			//元素之间使用,隔开
+			var arr2 = new Array(10,20,30);
+			//console.log(arr2);
+			
+			//创建一个数组数组中只有一个元素10
+			arr = [10];
+			
+			//创建一个长度为10的数组
+			arr2 = new Array(10);
+			
+			//console.log(arr2.length);
+			//数组中的元素可以是任意的数据类型
+			arr = ["hello",1,true,null,undefined];
+			
+			//也可以是对象
+			var obj = {name:"孙悟空"};
+			arr[arr.length] = obj;
+			arr = [{name:"孙悟空"},{name:"沙和尚"},{name:"猪八戒"}];
+			
+			//也可以是一个函数
+			arr = [function(){alert(1)},function(){alert(2)}];
+			
+			//console.log(arr);
+			//arr[0]();
+			
+			//数组中也可以放数组，如下这种数组我们称为二维数组
+			arr = [[1,2,3],[3,4,5],[5,6,7]];
+			console.log(arr[1]);
+```
+
+
+
 #### 73.JS基础_数组的遍历
 #### 74.JS基础_数组练习
 #### 75.JS基础_forEach
